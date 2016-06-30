@@ -32,4 +32,14 @@ public class TestEntityDAOTest {
         final Optional<TestEntity> foundEntityOptional = this.dao.findById(entity.getId());
         assertThat(foundEntityOptional).isPresent().contains(entity);
     }
+
+    /**
+     * Testing that we can't find an entity with an invalid id. It also makes
+     * sure we have multiple tests.
+     */
+    @Test
+    public void testQueryNotFound() {
+        final Optional<TestEntity> foundEntityOptional = this.dao.findById(1);
+        assertThat(foundEntityOptional).isAbsent();
+    }
 }
